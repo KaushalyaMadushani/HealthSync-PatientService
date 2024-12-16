@@ -12,7 +12,7 @@ FROM openjdk:17-jdk-slim
 EXPOSE 8080
 
 ARG JAR_FILE=target/patient-service.jar
-ADD target/patient-service.jar patient-service.jar
+ADD ${JAR_FILE} patient-service.jar
 
 ENTRYPOINT exec java -jar /patient-service.jar
 

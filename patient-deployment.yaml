@@ -39,7 +39,7 @@ spec:
         app: patient-service
     spec:
       containers:
-        - name: app
+        - name: patient-service
           image: gcr.io/${PROJECT_ID}/${IMAGE}:${TAG}
           imagePullPolicy: Always
           ports:
