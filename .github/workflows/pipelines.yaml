@@ -103,7 +103,7 @@ jobs:
         run: mvn clean package -DskipTests
 
       - name: Authenticate Google Cloud
-        uses: google-github-actions/auth@v0.11.0
+        uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GKE_SA_KEY }}
 
