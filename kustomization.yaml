@@ -1,6 +1,18 @@
+#apiVersion: kustomize.config.k8s.io/v1beta1
+#kind: Kustomization
+#
+#resources:
+#  - patient-service.yaml
+#  - patient-deployment.yaml
+
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
   - patient-service.yaml
   - patient-deployment.yaml
+
+images:
+  - name: gcr.io/PROJECT_ID/IMAGE:TAG
+    newName: gcr.io/${PROJECT_ID}/${IMAGE}
+    newTag: ${TAG}
