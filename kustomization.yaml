@@ -12,7 +12,7 @@ resources:
   - patient-service.yaml
   - patient-deployment.yaml
 
-images:
-  - name: gcr.io/PROJECT_ID/IMAGE:TAG
-    newName: gcr.io/${PROJECT_ID}/${IMAGE}
-    newTag: ${TAG}
+#images:
+#  - name: gcr.io/PROJECT_ID/IMAGE:TAG
+#    newName: gcr.io/${PROJECT_ID}/${IMAGE}
+#    newTag: ${TAG}
