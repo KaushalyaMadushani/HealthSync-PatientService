@@ -6,3 +6,4 @@ WORKDIR /patient-service
 COPY target/patient-service.jar patient-service.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "patient-service.jar"]
+
