@@ -128,14 +128,17 @@ jobs:
 
       - name: Set up Kustomize
         run: |-
-          curl -sfLo kustomize https://github.com/kubernetes-sigs/kcustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
-          chmod u+x ./customize
+          KUSTOMIZE_VERSION=3.1.0
+          curl -sLo kustomize.tar.gz https://github.com/kubernetes-sigs/kustomize/releases/download/v${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz
+          tar -xzf kustomize.tar.gz
+          chmod +x kustomize
+          sudo mv kustomize /usr/local/bin/kustomize
 
       - name: Deploy Image to GKE cluster
         run: |-
-          ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT_ID/$IMAGE:$TAG
-          ./kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment/$DEPLOYMENT_NAME
+          kustomize edit set image gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE }}:${{ env.TAG }}
+          kustomize build . | kubectl apply -f -
+          kubectl rollout status deployment/${{ env.DEPLOYMENT_NAME }}
           kubectl get services -o wide
 
 #      - name: Install Kustomize
