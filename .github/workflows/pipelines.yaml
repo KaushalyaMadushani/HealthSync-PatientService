@@ -78,11 +78,11 @@ on:
       - main
 
 env:
-  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  PROJECT_ID: ${{secrets.GKE_PROJECT}}
   GKE_CLUSTER: healthsync-cluster-1
   GKE_ZONE: us-central1-c
   DEPLOYMENT_NAME: patient-service
-  IMAGE: patient-service
+  IMAGE: patient-service-image
   TAG: 1.0.0
 
 jobs:
@@ -136,10 +136,17 @@ jobs:
 
       - name: Deploy Image to GKE cluster
         run: |-
-          kustomize edit set image gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE }}:${{ env.TAG }}
+          kustomize edit set image gcr.io/$PROJECT_ID/$IMAGE:$TAG
           kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment/${{ env.DEPLOYMENT_NAME }}
-          kubectl get services -o wide
+          kubectl rollout status deployment/$DEPLOYMENT_NAME
+          kubectl get services -o wide         
+
+#      - name: Deploy Image to GKE cluster
+#        run: |-
+#          kustomize edit set image gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE }}:${{ env.TAG }}
+#          kustomize build . | kubectl apply -f -
+#          kubectl rollout status deployment/${{ env.DEPLOYMENT_NAME }}
+#          kubectl get services -o wide
 
 #      - name: Install Kustomize
 #        run: |

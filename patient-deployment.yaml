@@ -39,8 +39,9 @@ spec:
         app: patient-service
     spec:
       containers:
-        - name: patient-service
-          image: gcr.io/${env.PROJECT_ID}/${env.IMAGE}:${env.TAG}
+        - name: app
+          image: gcr.io/PROJECT_ID/IMAGE:TAG
+          #image: gcr.io/${env.PROJECT_ID}/${env.IMAGE}:${env.TAG}
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
