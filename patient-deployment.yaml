@@ -41,7 +41,7 @@ spec:
       containers:
         - name: app
 #          image: gcr.io/PROJECT_ID/IMAGE:TAG
-          image: gcr.io/${{secrets.GKE_PROJECT}}/patient-service-image:1.0.0
+          image: gcr.io/healthsync-444908/patient-service-image:1.0.0
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
