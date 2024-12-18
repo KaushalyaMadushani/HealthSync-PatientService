@@ -1,9 +1,10 @@
 package com.healthsync.patient.model;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 
 @Document(value = "patient")
@@ -21,9 +22,9 @@ public class Patient {
     private String contactNum;
     private String address;
     private String email;
-    private String medicalHistory;
-    private String prescriptions;
-    private String labResults;
+    private List<String> medicalHistory;
+    private List<String> prescriptions;
+    private List<String> labResults;
 
     // Getter and Setter for patientId
     public String getPatientId() {
@@ -89,29 +90,29 @@ public class Patient {
     }
 
     // Getter and Setter for medicalHistory
-    public String getMedicalHistory() {
+    public List<String> getMedicalHistory() {
         return medicalHistory;
     }
 
-    public void setMedicalHistory(String medicalHistory) {
+    public void setMedicalHistory(List<String> medicalHistory) {
         this.medicalHistory = medicalHistory;
     }
 
     // Getter and Setter for prescriptions
-    public String getPrescriptions() {
+    public List<String> getPrescriptions() {
         return prescriptions;
     }
 
-    public void setPrescriptions(String prescriptions) {
+    public void setPrescriptions(List<String> prescriptions) {
         this.prescriptions = prescriptions;
     }
 
     // Getter and Setter for labResults
-    public String getLabResults() {
+    public List<String> getLabResults() {
         return labResults;
     }
 
-    public void setLabResults(String labResults) {
+    public void setLabResults(List<String> labResults) {
         this.labResults = labResults;
     }
 }
