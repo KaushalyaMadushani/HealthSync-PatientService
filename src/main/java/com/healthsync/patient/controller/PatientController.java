@@ -24,9 +24,6 @@ public class PatientController {
     public ResponseEntity<Patient> createPatient(@RequestBody Patient patient){
         return ResponseEntity.ok(patientService.createPatient(patient));
     }
-//    public Patient createPatient(@RequestBody PatientRequest patientRequest) {
-//        return patientService.createPatient(patientRequest);
-//    }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
