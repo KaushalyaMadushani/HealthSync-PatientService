@@ -83,7 +83,7 @@ env:
   GKE_ZONE: us-central1-c
   DEPLOYMENT_NAME: patient-service
   IMAGE: patient-service-image
-  TAG: 1.0.0
+  TAG: 1.0.1
 
 jobs:
   build-publish-deploy:
